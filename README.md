@@ -1,8 +1,8 @@
 # B2B-file-sharing
-a bittorrent-based B2B file sharing simulation in python
+a BitTorrent-based B2B file sharing simulation in python
 
 ### How to run the program:
-In this program, Python and django are used to store program data such as files and peers.
+In this program, Python and Django are used to store program data such as files and peers.
 To install the requirements in the main project path, use the following command:
 ```bash
 pip install -r requirements.txt
@@ -20,19 +20,19 @@ Also, to create and use an instance of peer, type the file py.runner_peer with t
 ```bash
 Python run_peer.py peer1
 ```
-You can do this in again to have more peers. If such a peer was created before, the tracker detects and returns its specified port. And if not, assign a new port to it.
+You can do this again to have more peers. If such a peer was created before, the tracker detects and returns its specified port. And if not, assign a new port to it.
 This port represents on which port the peer receives the messages.
 It should be noted that the tracker itself listens to a specific port in advance and responds to requests
 
-### how it works in background:
+### how it works in the background:
 - The tracker is always running and listening without interruption.
 - A new peer comes in and informs the tracker that it is activated and the tracker informs him which port to listen on.
 - Peer can also tell what files it already owes. By default, files are identified by their name, just as peers are identified by their names.
 - Peer can also be removed, in which case the tracker will disable it.
-- Any peer that declares a file to the tracker, Tracker has a list of peers that hold that file. Selects a number of them, Gives each one a specific port. It tells the recipient to listen to this port and wait for the a portion of the file you requested.
-- tells each sender to send the that portion through this port (which is waiting for you).
-- It should be noted that in order to inform, it uses threading, and in separate threads transimts this information simultaneously.
-- Now we go to the peers section. We have each peer to listen on a port without interruption
+- Any peer that declares a file to the tracker, Tracker has a list of peers that hold that file. Selects a number of them, Gives each one a specific port. It tells the recipient to listen to this port and wait for the portion of the file you requested.
+- tells each sender to send that portion through this port (which is waiting for you).
+- It should be noted that to inform, it uses threading, and separate threads transmit this information simultaneously.
+- Now we go to the peer's section. We have each peer listen on a port without interruption
 - through it realizes that it must now send the part of the file (previously requested by others)
 - For each one, it makes a series of fragments and transmits the sections through them
 - It should be noted that before sending, Breaks the desired part and sends that desired part
